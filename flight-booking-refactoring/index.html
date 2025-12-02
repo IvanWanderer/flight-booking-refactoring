@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рефакторинг: Бронювання авіаквитків</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>SkyLegacy Airlines</h1>
+      <p>Рефакторинг старої системи бронювання (2012 → 2025)</p>
+    </header>
+
+    <!-- Форма пошуку -->
+    <section class="search">
+      <input type="text" id="from" placeholder="Звідки (наприклад, Київ)" value="Київ">
+      <input type="text" id="to" placeholder="Куди (наприклад, Париж)" value="Париж">
+      <input type="date" id="date" value="2025-12-25">
+      <button id="search-btn">Шукати рейси</button>
+    </section>
+
+    <!-- Фільтри та сортування -->
+    <section class="controls">
+      <div class="filters">
+        <label>Макс. ціна: <span id="price-value">5000</span> грн</label>
+        <input type="range" id="price-filter" min="0" max="10000" value="5000">
+        
+        <label><input type="checkbox" id="direct-only"> Тільки прямі рейси</label>
+        
+        <select id="airline-filter">
+          <option value="">Всі авіакомпанії</option>
+          <option value="UIA">UIA</option>
+          <option value="WizzAir">WizzAir</option>
+          <option value="Ryanair">Ryanair</option>
+          <option value="Turkish">Turkish Airlines</option>
+        </select>
+      </div>
+
+      <select id="sort">
+        <option value="price-asc">Спочатку дешевші</option>
+        <option value="price-desc">Спочатку дорожчі</option>
+        <option value="duration">За тривалістю</option>
+      </select>
+    </section>
+
+    <!-- Список рейсів -->
+    <section id="flights-list" class="flights"></section>
+
+    <!-- Корзина -->
+    <section class="cart">
+      <h2>Ваше бронювання (<span id="cart-count">0</span>)</h2>
+      <div id="cart-items"></div>
+      <div class="total">Разом: <strong id="total-price">0</strong> грн</div>
+      <button id="book-now">Забронювати</button>
+      <button id="clear-cart">Очистити</button>
+    </section>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">×</span>
+        <h2>Вітаємо!</h2>
+        <p id="booking-info"></p>
+        <button id="close-modal">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+
+  <!-- Переключати скрипт -->
+
+  <!-- Старий жахливий код -->
+  <!-- <script src="old/script-old.js"></script> -->
+
+  <!-- Новий код -->
+  <script type="module" src="refactored/main.js"></script>
+</body>
+</html>
